@@ -1,0 +1,10 @@
+# Use an official OpenJDK runtime as the base image (for Java 17; adjust for your version)
+FROM openjdk:17-jdk-slim
+# Set the working directory inside the container
+WORKDIR /app
+# Copy the Spring Boot JAR file from your host to the container (fixed JAR name)
+COPY target/OrderService-0.0.1-SNAPSHOT.jar app.jar
+# Expose the port your Spring Boot app runs on (default is 8080)
+EXPOSE 9090
+# Run the JAR file when the container starts
+ENTRYPOINT ["java", "-jar", "/app.jar"]
